@@ -37,10 +37,10 @@ app.post('/signup', (req, res) => {
 
   const postData = JSON.stringify(data);
 
-  fetch('https://usX.api.mailchimp.com/3.0/lists/<YOUR_AUDIENCE_ID>', {
+  fetch('https://us4.api.mailchimp.com/3.0/lists/30b55ac31a', {
     method: 'POST',
     headers: {
-      Authorization: 'auth <YOUR_API_KEY>'
+      Authorization: 'auth eafb911205537e1c686888a0f5bbdbdc-us4'
     },
     body: postData
   })
@@ -50,6 +50,6 @@ app.post('/signup', (req, res) => {
     .catch(err => console.log(err))
 })
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, console.log(`Server started on ${PORT}`));
