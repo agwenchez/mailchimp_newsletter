@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fetch = require('node-fetch');
 const { default: Axios } = require('axios');
+require('dotenv').config();
+const API_KEY = process.env.API_KEY
 
 const app = express();
 
@@ -41,7 +43,7 @@ app.post('/signup', (req, res) => {
   fetch('https://us4.api.mailchimp.com/3.0/lists/30b55ac31a', {
     method: 'POST',
     headers: {
-      Authorization: 'auth eafb911205537e1c686888a0f5bbdbdc-us4'
+      Authorization: `auth ${API_KEY}`
     },
     body: postData
   })
