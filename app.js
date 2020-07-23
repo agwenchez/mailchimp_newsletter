@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fetch = require('node-fetch');
+const { default: Axios } = require('axios');
 
 const app = express();
 
@@ -48,6 +49,21 @@ app.post('/signup', (req, res) => {
       res.redirect('/success.html') :
       res.redirect('/fail.html'))
     .catch(err => console.log(err))
+})
+
+
+app.get('/campaigns',(req,res)=>{
+  // res.send('Camaign route works fine');
+
+  Axios.get('https://us4.api.mailchimp.com/3.0/automations',
+  {
+    headers:{
+      Authorization: 'auth eafb911205537e1c686888a0f5bbdbdc-us4'
+    }
+  }
+  ).then( result =>res.status(200).send(result.data))
+   .catch(err => res.status(404).json({sucees:false}));
+  
 })
 
 const PORT = process.env.PORT || 8000;
