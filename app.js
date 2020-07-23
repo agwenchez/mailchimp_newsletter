@@ -60,7 +60,7 @@ app.get('/campaigns',(req,res)=>{
   Axios.get('https://us4.api.mailchimp.com/3.0/automations',
   {
     headers:{
-      Authorization: 'auth eafb911205537e1c686888a0f5bbdbdc-us4'
+      Authorization: `auth ${API_KEY}`
     }
   }
   ).then( result =>res.status(200).send(result.data))
